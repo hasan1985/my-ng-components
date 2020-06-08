@@ -3,10 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TypeAheadComponent } from './my-components/type-ahead/type-ahead.component';
+import { MyComponentListsComponent } from './entry-components/my-component-lists/my-component-lists.component';
+import { AngularDefaultPageComponent } from './entry-components/angular-default-page/angular-default-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TypeAheadComponent,
+    MyComponentListsComponent,
+    AngularDefaultPageComponent
   ],
   imports: [
     BrowserModule,
