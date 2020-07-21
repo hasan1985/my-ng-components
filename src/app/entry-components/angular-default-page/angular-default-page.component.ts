@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AngularDefaultPageComponent implements OnInit {
 
   title = 'my-ng-components';
-  
+
   constructor() { }
 
   ngOnInit(): void {
