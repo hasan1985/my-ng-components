@@ -1,0 +1,13 @@
+.dropdownElement {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownMenu {
+    position: absolute;
+    display: inline-block;
+    border: 1px solid black;
+    width: 100%;
+    background: white;
+    z-index: 100;
+}

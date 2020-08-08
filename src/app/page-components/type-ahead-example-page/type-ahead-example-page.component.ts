@@ -9,6 +9,8 @@ export class TypeAheadExamplePageComponent implements OnInit {
 
   constructor() { }
 
+  public readonly wordList = ["aab", "aaaab", "aac"];
+
   ngOnInit(): void {
   }
 

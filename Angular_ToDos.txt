@@ -1,0 +1,11 @@
+Angular ToDos - 
+
+1. Learn from angular meterials - 
+	- code - https://github.com/angular/components/tree/master/src/material
+	- UI - https://material.angular.io/components/categories
+
+2. Build components 
+	- Infinite Image scroll
+	- Tree hierarchy folder structure
+	- Slider
+	- Loading slider

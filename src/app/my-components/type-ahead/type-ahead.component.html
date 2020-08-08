@@ -1,1 +1,11 @@
-<p>type-ahead works!</p>
+<div class="dropdownElement">
+    <input (keyup)="onKey($event)" (focus)="onFocus()" (focusout)="onFocusOut()">
+    <br>
+    <div class="dropdownMenu" *ngIf="showDropdown && filteredList!.length > 0">
+        <div *ngFor="let word of filteredList">{{word}}</div>
+    </div>
+</div>
+
+
+
+
