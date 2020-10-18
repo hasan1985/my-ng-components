@@ -1,1 +1,11 @@
 <p>star-rater works!</p>
+
+<div (mouseleave) = "onContainerMouseLeave()" style="border: 1px solid red; display: inline-block;">
+    <span *ngFor = "let starState of starStates" 
+        [innerHTML] = starChar
+        [className] = "starState && starState.enabled ? 'enabled' : 'disabled'"
+        (mouseenter) = onStarMouseEnter(starState.id)        
+        (onclick) = onStarClick(starSta)
+    ></span>
+</div>
+
