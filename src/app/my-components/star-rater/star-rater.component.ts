@@ -1,5 +1,4 @@
-import { Component, OnInit, OnChanges, Input, Output, SimpleChanges } from '@angular/core';
-import { EventEmitter } from 'protractor';
+import { Component, OnInit, OnChanges, Input, Output, SimpleChanges, EventEmitter } from '@angular/core';
 import { enableDebugTools } from '@angular/platform-browser';
 
 @Component({
@@ -10,9 +9,9 @@ import { enableDebugTools } from '@angular/platform-browser';
 export class StarRaterComponent implements OnChanges {
 
   @Input() numberOfStars = 5;
-  @Input() rating = -1;
-  @Output() onRatingChange;
-
+  @Input() rating = 2;
+  @Output() onRatingChange: EventEmitter<number> = new EventEmitter<number>();
+  
   public readonly starChar = "&#9733";
   public starStates: starState[] = [];
 
@@ -29,23 +28,26 @@ export class StarRaterComponent implements OnChanges {
   }
 
   public onContainerMouseLeave() {
-    this.highlight(this.rating);
-    console.log("onMouseoutFromContainer");
+    this.highlightByRating(this.rating);
+    console.log("onContainerMouseLeave");
   }
 
   public onStarMouseEnter(index: number) {
-    this.highlight(index);
-    console.log("onMouseoverStar");
+    this.highlightByRating(index + 1);
+    console.log("onStarMouseEnter");
   }
 
   public onStarClick(index: number) {
-    this.rating = this.rating == index ? index - 1 : index;
-    this.highlight(this.rating);
+    const newRating = index + 1;
+    this.rating = this.rating == newRating ? newRating - 1 : newRating;
+    this.highlightByRating(this.rating);
+    this.onRatingChange.emit(this.rating);
+    console.log("onStarClick");
   }
   
-  private highlight(index: number) {
-    for (let i = 0; i < this.numberOfStars; i++) {
-      this.starStates[i].enabled = (i <= index);
+  private highlightByRating(rating: number) {
+    for (let index = 0; index < this.numberOfStars; index++) {
+      this.starStates[index].enabled = (index < rating);
     }
   }
 
@@ -54,7 +56,7 @@ export class StarRaterComponent implements OnChanges {
     for (let i = 0; i < this.numberOfStars; i++) {
       this.starStates.push({
         id: i,
-        enabled: false
+        enabled: i < this.rating ? true : false
       });
     }
   }

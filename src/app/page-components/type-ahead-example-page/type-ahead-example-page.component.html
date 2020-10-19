@@ -2,5 +2,5 @@
     type-ahead-example-page works! <br><br>
     <app-type-ahead [wordList]="wordList"></app-type-ahead>
 
-    <star-rater></star-rater>
+    <star-rater  [rating] = initRating (onRatingChange) = newRating($event)></star-rater>
 </div>
