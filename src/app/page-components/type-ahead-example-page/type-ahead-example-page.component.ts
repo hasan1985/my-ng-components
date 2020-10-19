@@ -14,10 +14,10 @@ export class TypeAheadExamplePageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public initRating = 3; // use a getter setter for this
+  public initRating = 1;
   public newRating(newRating: number) {
     console.log("from parent component. Old rating was ", this.initRating, " new Rating is ", newRating);
-    this.initRating = newRating;
+    this.initRating = newRating; // not needed since two-way-binding is done on initRating;
   }
 
 }

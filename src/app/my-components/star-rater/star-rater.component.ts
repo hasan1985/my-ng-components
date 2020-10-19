@@ -9,8 +9,10 @@ import { enableDebugTools } from '@angular/platform-browser';
 export class StarRaterComponent implements OnChanges {
 
   @Input() numberOfStars = 5;
-  @Input() rating = 2;
-  @Output() onRatingChange: EventEmitter<number> = new EventEmitter<number>();
+
+  @Input() rating = 0;
+  // for two way binding syntax to work it needs "<variableName>Change", also ll need to call manually.
+  @Output() ratingChange: EventEmitter<number> = new EventEmitter<number>();
   
   public readonly starChar = "&#9733";
   public starStates: starState[] = [];
@@ -29,20 +31,17 @@ export class StarRaterComponent implements OnChanges {
 
   public onContainerMouseLeave() {
     this.highlightByRating(this.rating);
-    console.log("onContainerMouseLeave");
   }
 
   public onStarMouseEnter(index: number) {
     this.highlightByRating(index + 1);
-    console.log("onStarMouseEnter");
   }
 
   public onStarClick(index: number) {
     const newRating = index + 1;
     this.rating = this.rating == newRating ? newRating - 1 : newRating;
     this.highlightByRating(this.rating);
-    this.onRatingChange.emit(this.rating);
-    console.log("onStarClick");
+    this.ratingChange.emit(this.rating);
   }
   
   private highlightByRating(rating: number) {
