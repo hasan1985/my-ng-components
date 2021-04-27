@@ -7,12 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TypeAheadExamplePageComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    let count = 0;
+    setTimeout(() => {
+      this.condition2 = 1;
+    }, 2000);
+  }
 
   public readonly wordList = ["aab", "aaaab", "aac"];
-  
+
   ngOnInit(): void {
   }
+
+  public anyText = "test test";
 
   public initRating = 1;
   public newRating(newRating: number) {
@@ -20,4 +27,7 @@ export class TypeAheadExamplePageComponent implements OnInit {
     this.initRating = newRating; // not needed since two-way-binding is done on initRating;
   }
 
+  public condition2 = 0;
+  public condition = 1;
+  
 }

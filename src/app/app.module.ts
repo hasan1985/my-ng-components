@@ -8,6 +8,8 @@ import { MyComponentListsComponent } from './entry-components/my-component-lists
 import { AngularDefaultPageComponent } from './entry-components/angular-default-page/angular-default-page.component';
 import { TypeAheadExamplePageComponent } from './page-components/type-ahead-example-page/type-ahead-example-page.component';
 import { StarRaterComponent } from './my-components/star-rater/star-rater.component';
+import { MySwitchCase, MySwitch } from './my-directives/my-switch/my-switch.directive';
+
 
 @NgModule({
   declarations: [
@@ -16,13 +18,19 @@ import { StarRaterComponent } from './my-components/star-rater/star-rater.compon
     MyComponentListsComponent,
     AngularDefaultPageComponent,
     TypeAheadExamplePageComponent,
-    StarRaterComponent
+    StarRaterComponent,
+    MySwitch,
+    MySwitchCase
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // exports: [
+  //   MySwitch,
+  //   MySwitchCase
+  // ]
 })
 export class AppModule { }

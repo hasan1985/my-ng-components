@@ -3,4 +3,31 @@
     <app-type-ahead [wordList]="wordList"></app-type-ahead>
 
     <star-rater  [(rating)]="this.initRating" (ratingChange)="newRating($event)"></star-rater>
+    
+    <br>
+
+    matching with {{this.condition}}
+    <br>
+    <div [appMySwitch]="this.condition">
+        <div *appMySwitchCase = "this.condition2">
+            appMySwitchCase
+            {{this.condition2}}
+            <div [appMySwitch]="this.condition">
+                <div *appMySwitchCase = "this.condition2">
+                    nested case
+                </div>
+                <div *appMySwitchCase = "this.condition2">
+                    nested case 2
+                </div>
+                <div *appMySwitchCase = "1010">
+                    appMySwitchCase2
+                </div>    
+            </div>
+        </div>    
+        <div *appMySwitchCase = "1010">
+            appMySwitchCase2
+            {{this.condition2}}
+        </div>    
+    </div>
+
 </div>
