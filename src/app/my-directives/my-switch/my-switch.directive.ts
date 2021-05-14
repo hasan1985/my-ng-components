@@ -107,9 +107,8 @@ export class MySwitch {
     this.updateCases();
   }
 
-  ngAfterViewInit() {
-    // viewChildren is set after view init
-    this.updateCases();
+  ngAfterViewInit() { // this is not needed
+    this.updateCases(); // viewChildren is set after view init
   }
 
   public updateCases(): void {
@@ -147,6 +146,7 @@ export class MySwitch {
 // also look at - https://github.com/angular/angular/blob/master/packages/common/src/directives/ng_switch.ts
 
 /** Important topic learned while doing this excercise
+ * ngAfterViewInit - life cycle hooks
  * ViewContainerRef
  * TemplateRef
  * @ContentChildren
@@ -159,4 +159,5 @@ export class MySwitch {
  * 
  * To do
  *  Is it performant? callgin detectChanges from OnChanges
+ *  updateCases performance can be improved by not calling it from SwitchCases
  */
