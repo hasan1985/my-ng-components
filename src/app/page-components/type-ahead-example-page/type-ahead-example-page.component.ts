@@ -9,9 +9,7 @@ export class TypeAheadExamplePageComponent implements OnInit {
 
   constructor() { 
     let count = 0;
-    setTimeout(() => {
-      this.condition2 = 1;
-    }, 2000);
+    this.changeMySwitchCaseValueAsync();
   }
 
   public readonly wordList = ["aab", "aaaab", "aac"];
@@ -27,7 +25,16 @@ export class TypeAheadExamplePageComponent implements OnInit {
     this.initRating = newRating; // not needed since two-way-binding is done on initRating;
   }
 
-  public condition2 = 0;
-  public condition = 1;
-  
+  // custom switch case
+  targetCondition = 1;
+  toMatchCondition_1 = 1;
+  toMatchCondition_2 = 2;
+  breakForMatchCondition_2 = true;
+  changeMySwitchCaseValueAsync(): void {
+    setTimeout(() => this.targetCondition = 2, 2000);
+    setTimeout(() => this.breakForMatchCondition_2 = false, 4000);
+    setTimeout(() => this.toMatchCondition_2 = 3, 6000);
+    setTimeout(() => this.targetCondition = 3, 8000);
+    setTimeout(() => this.breakForMatchCondition_2 = true, 10000);
+  }
 }

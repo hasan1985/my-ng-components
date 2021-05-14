@@ -1,33 +1,44 @@
-<div class="full-page">
-    type-ahead-example-page works! <br><br>
+<div class="full-page" style="padding: 10px;">
+    <!-- type-ahead-example-page works! <br><br>
     <app-type-ahead [wordList]="wordList"></app-type-ahead>
+
+    <br><br><br><br>
 
     <star-rater  [(rating)]="this.initRating" (ratingChange)="newRating($event)"></star-rater>
     
-    <br>
+    <br><br><br><br> -->
 
-    matching with {{this.condition}}
-    <br>
-    <div [appMySwitch]="this.condition">
-        <div *appMySwitchCase = "this.condition2">
-            appMySwitchCase
-            {{this.condition2}}
-            <div [appMySwitch]="this.condition">
-                <div *appMySwitchCase = "this.condition2">
-                    nested case
-                </div>
-                <div *appMySwitchCase = "this.condition2">
-                    nested case 2
-                </div>
-                <div *appMySwitchCase = "1010">
-                    appMySwitchCase2
-                </div>    
+    
+
+    
+    matching with {{this.targetCondition}}<br>
+    <div [appMySwitch]="this.targetCondition">
+
+        <div *appMySwitchCase = "this.toMatchCondition_1">
+            case : {{this.toMatchCondition_1}}
+            <div [appMySwitch]="'nested condition 2'" style="padding-left: 6px;">
+                <div *appMySwitchCase = "'nested condition 1'">nested case: nested condition 1</div>
+                <div *appMySwitchCase = "'nested condition 2'">nested case: nested condition 2</div>
             </div>
-        </div>    
-        <div *appMySwitchCase = "1010">
-            appMySwitchCase2
-            {{this.condition2}}
-        </div>    
+        </div>
+        
+        <div *appMySwitchCase = "this.toMatchCondition_2; break: breakForMatchCondition_2">
+            <!-- this converts to 
+                <ng-template 
+                    [appMySwitchCase]="this.toMatchCondition_2" 
+                    [appMySwitchCaseBreak]="breakForMatchCondition_2">
+                </ng-template> 
+            -->
+            case : {{this.toMatchCondition_2}} 
+        </div>
+        
+        <div *appMySwitchCase = "this.toMatchCondition_2">
+            case : {{this.toMatchCondition_2}}
+        </div>
+        
+        <div *appMySwitchDefault>
+            case: default
+        </div>
+        
     </div>
-
 </div>
