@@ -33,9 +33,9 @@ import { Directive, Input, ViewContainerRef, TemplateRef, Host, OnChanges, ViewC
  */
 
 class SwitchCaseBase implements OnChanges {
-  constructor(public viewContainer: ViewContainerRef,
-              public templateRef: TemplateRef<Object>,
-              public appMySwitch: MySwitch) {
+  constructor(protected viewContainer: ViewContainerRef,
+              protected templateRef: TemplateRef<Object>,
+              protected appMySwitch: MySwitch) {
   }
 
   ngOnChanges() {
@@ -63,9 +63,9 @@ export class MySwitchCase extends SwitchCaseBase {
   @Input() appMySwitchCase: any;
   @Input() appMySwitchCaseBreak: boolean;
 
-  constructor(public viewContainer: ViewContainerRef,
-              public templateRef: TemplateRef<Object>,
-              @Host() public appMySwitch: MySwitch) { // it will work even without @Host
+  constructor(protected viewContainer: ViewContainerRef,
+              protected templateRef: TemplateRef<Object>,
+              @Host() protected appMySwitch: MySwitch) { // it will work even without @Host
 
       // read about @Host decorator - 
       // https://indepth.dev/posts/1063/a-curious-case-of-the-host-decorator-and-element-injectors-in-angular
@@ -76,9 +76,9 @@ export class MySwitchCase extends SwitchCaseBase {
 
 @Directive({selector: '[appMySwitchDefault]'})
 export class MySwitchDefault  extends SwitchCaseBase {
-  constructor(public viewContainer: ViewContainerRef,
-              public templateRef: TemplateRef<Object>,
-              @Host() public appMySwitch: MySwitch) { // it will work even without @Host
+  constructor(protected viewContainer: ViewContainerRef,
+              protected templateRef: TemplateRef<Object>,
+              @Host() protected appMySwitch: MySwitch) { // it will work even without @Host
 
     super(viewContainer, templateRef, appMySwitch);
   }
@@ -146,13 +146,17 @@ export class MySwitch {
 
 // also look at - https://github.com/angular/angular/blob/master/packages/common/src/directives/ng_switch.ts
 
-/**
- * Important topic
+/** Important topic learned while doing this excercise
  * ViewContainerRef
  * TemplateRef
  * @ContentChildren
  * @ViewChildren
- * How to extend TS/JS class
- * @host, @self
- * Structural syntanxt
+ * @host, @self - https://medium.com/frontend-coach/self-or-optional-host-the-visual-guide-to-angular-di-decorators-73fbbb5c8658
+ * Structural directive syntax reference https://angular.io/guide/structural-directives#structural-directive-syntax-reference
+ * How to extends TS/JS class
+ *    constructor(private) extends constructor(private) doesn't work
+ *    user protected - https://www.typescriptlang.org/docs/handbook/2/classes.html#protected
+ * 
+ * To do
+ *  Is it performant? callgin detectChanges from OnChanges
  */
