@@ -32,11 +32,11 @@ import { Directive, Input, ViewContainerRef, TemplateRef, Host, OnChanges, ViewC
     </div>
  */
 
-class SwitchCaseBase implements OnChanges{
+class SwitchCaseBase implements OnChanges {
   constructor(public viewContainer: ViewContainerRef,
               public templateRef: TemplateRef<Object>,
               public appMySwitch: MySwitch) {
-    }
+  }
 
   ngOnChanges() {
     this.appMySwitch.updateCases();
@@ -145,3 +145,14 @@ export class MySwitch {
 }
 
 // also look at - https://github.com/angular/angular/blob/master/packages/common/src/directives/ng_switch.ts
+
+/**
+ * Important topic
+ * ViewContainerRef
+ * TemplateRef
+ * @ContentChildren
+ * @ViewChildren
+ * How to extend TS/JS class
+ * @host, @self
+ * Structural syntanxt
+ */
